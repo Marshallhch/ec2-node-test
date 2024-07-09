@@ -1,13 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const { Pool } = require('pg');
+const { pool } = require('./services/database');
 require("dotenv").config();
 
 const PORT = process.env.PORT || 8080;
 
 app.get('/', (req, res) => {
-  res.send('Hello World!, This is a simple API to get volume services from a database.');
+  res.send('Hello World!');
 })
 
 const getVolumeServices = async (req, res) => {
