@@ -1,25 +1,22 @@
+const PORT = process.env.PORT || 8080;
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const { pool } = require('./services/database');
-require("dotenv").config();
 
-const PORT = process.env.PORT || 8080;
-
-app.get('/', (req, res) => {
-  res.send('Hello World! some changes made by me to test the CI/CD pipeline');
-})
-
-const getVolumeServices = async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM volume_services');
-    return res.status(200).json(result.rows);
-    
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
-  }
+let corsOptions = {
+  origin: 'http://localhost:8080',
+  credentials: true,
 };
 
-app.get('/volumeServices', getVolumeServices);
+app.use(cors(corsOptions));
+
+app.use(require('./routes/visitorsRoute'));
+app.use(require('./routes/customersRoute'));
+app.use(require('./routes/totalRevenueRoute'));
+app.use(require('./routes/targetRealityRoute'));
+app.use(require('./routes/topProductsRoute'));
+app.use(require('./routes/salesMapRoute'));
+app.use(require('./routes/volumeServicesRoute'));
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
