@@ -19,4 +19,4 @@ app.use(require('./routes/topProductsRoute'));
 app.use(require('./routes/salesMapRoute'));
 app.use(require('./routes/volumeServicesRoute'));
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}. deploy on http://3.27.35.124 AMAZON AWS`));
