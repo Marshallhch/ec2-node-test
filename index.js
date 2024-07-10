@@ -9,6 +9,10 @@ let corsOptions = {
   credentials: true,
 };
 
+app.get('/', (req, res) => {
+  res.send(`Server is running on port ${PORT}. deploy on http://3.27.35.124 AMAZON AWS`);
+});
+
 app.use(cors(corsOptions));
 
 app.use(require('./routes/visitorsRoute'));
