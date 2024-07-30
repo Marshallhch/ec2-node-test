@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 
 let corsOptions = {
-  origin: 'https://marshallhch.github.io/react_graph_dashbord_front',
+  origin: 'http://localhost:3000',
   credentials: true,
 };
 
