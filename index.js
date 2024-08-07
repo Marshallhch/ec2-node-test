@@ -4,10 +4,13 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-let corsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
-};
+// let corsOptions = {
+//   origin: 'http://localhost:3000',
+//   credentials: true,
+// };
+
+app.use(express.json());
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.send(`Server is running on port ${PORT}. deploy on http://3.27.35.124 AMAZON AWS`);
