@@ -9,14 +9,19 @@ const app = express();
 //   credentials: true,
 // };
 
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
+const options = {
+  origin: allowedOrigins,
+};
+
 // app.use(express.json());
-app.use(cors())
+// app.use(cors())
 
 app.get('/', (req, res) => {
   res.send(`Server is running on port ${PORT}. deploy on http://3.27.35.124 AMAZON AWS`);
 });
 
-// app.use(cors(corsOptions));
+app.use(cors(options));
 
 app.use(require('./routes/visitorsRoute'));
 app.use(require('./routes/customersRoute'));
